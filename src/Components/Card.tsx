@@ -1,16 +1,22 @@
 import React from "react";
+import { cocktailType } from "../Type";
 
-const Card = () => {
+type PropType = {
+  cocktail: cocktailType;
+};
+
+const Card: React.FunctionComponent<PropType> = ({ cocktail }) => {
+  const { name, img, glass, alcoholic } = cocktail;
   return (
     <article className="cocktail">
       <div className="img-container">
-        <img src="" alt="CocktailName" />
+        <img src={img} alt="CocktailName" />
       </div>
       <div className="cocktail-footer">
-        <h3>Name</h3>
-        <h4>Glass</h4>
-        <p>Info</p>
-        <button className="btn btn-primary btn-details">details</button>
+        <h3>{name}</h3>
+        <h4>{glass}</h4>
+        <p>{alcoholic}</p>
+        <button className="btn btn-primary btn-details">Details</button>
       </div>
     </article>
   );

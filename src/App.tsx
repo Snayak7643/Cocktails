@@ -6,7 +6,6 @@ import CocktailContext from "./Contexts/cocktailContext";
 import About from "./Pages/About";
 import Cocktail from "./Pages/Cocktail";
 import Home from "./Pages/Home";
-import Loader from "./Components/Loader";
 import { cocktailType } from "./Type";
 
 function App() {
@@ -46,12 +45,8 @@ function App() {
     fetchCocktails();
   }, []);
 
-  if (loading) {
-    return <Loader />;
-  }
-
   return (
-    <CocktailContext.Provider value={cocktails}>
+    <CocktailContext.Provider value={{ cocktails, loading }}>
       <BrowserRouter>
         <Navbar />
         <Routes>

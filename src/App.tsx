@@ -1,13 +1,20 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navbar from "./Components/Navbar";
 import { ALL_URL } from "./Constants/URL";
+import CocktailContext from "./Contexts/cocktailContext";
 import About from "./Pages/About";
 import Cocktail from "./Pages/Cocktail";
 import Home from "./Pages/Home";
+import Loader from "./Components/Loader";
+import { cocktailType } from "./Type";
 
 function App() {
+  const [loading, setLoading] = useState<boolean>(true);
+  const [cocktails, setCocktails] = useState<cocktailType[]>([]);
+
   const fetchCocktails = async () => {
+    setLoading(true);
     try {
       console.log("fetching");
       const response = await fetch(ALL_URL);
@@ -24,9 +31,14 @@ function App() {
             img: strDrinkThumb,
           };
         });
-        console.log(desiredCocktails);
+        setCocktails(desiredCocktails);
+        setLoading(false);
+        return;
       }
+      setCocktails([]);
+      setLoading(false);
     } catch (error) {
+      setLoading(false);
       alert(error);
     }
   };
@@ -34,15 +46,21 @@ function App() {
     fetchCocktails();
   }, []);
 
+  if (loading) {
+    return <Loader />;
+  }
+
   return (
-    <BrowserRouter>
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/cocktail" element={<Cocktail />} />
-      </Routes>
-    </BrowserRouter>
+    <CocktailContext.Provider value={cocktails}>
+      <BrowserRouter>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/cocktail" element={<Cocktail />} />
+        </Routes>
+      </BrowserRouter>
+    </CocktailContext.Provider>
   );
 }
 

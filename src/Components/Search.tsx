@@ -5,7 +5,7 @@ const Search = () => {
     <section className="section search">
       <form className="search-form">
         <div className="form-control">
-          <label htmlFor="name">search your favorite cocktail</label>
+          <label>search your favorite cocktail</label>
           <input type="text" />
         </div>
       </form>

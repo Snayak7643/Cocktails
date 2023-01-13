@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { cocktailType } from "../Type";
 
 type PropType = {
@@ -6,7 +7,7 @@ type PropType = {
 };
 
 const Card: React.FunctionComponent<PropType> = ({ cocktail }) => {
-  const { name, img, glass, alcoholic } = cocktail;
+  const { id, name, img, glass, alcoholic } = cocktail;
   return (
     <article className="cocktail">
       <div className="img-container">
@@ -16,7 +17,9 @@ const Card: React.FunctionComponent<PropType> = ({ cocktail }) => {
         <h3>{name}</h3>
         <h4>{glass}</h4>
         <p>{alcoholic}</p>
-        <button className="btn btn-primary btn-details">Details</button>
+        <Link to="/cocktail" state={{ id }}>
+          <button className="btn btn-primary btn-details">Details</button>
+        </Link>
       </div>
     </article>
   );

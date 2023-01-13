@@ -1,16 +1,8 @@
 import React from "react";
-import Navbar from "./Components/Navbar";
-import Search from "./Components/Search";
-import CocktailList from "./Components/CocktailList";
+import Home from "./Pages/Home";
 
 function App() {
-  return (
-    <div>
-      <Navbar />
-      <Search />
-      <CocktailList />
-    </div>
-  );
+  return <Home />;
 }
 
 export default App;

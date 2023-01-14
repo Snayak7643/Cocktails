@@ -16,3 +16,10 @@ export type cocktailDetailType = {
   ingredients: string[];
   instructions: string;
 };
+
+export type cocktailContextType = {
+  cocktails: cocktailType[];
+  loading: boolean;
+  searchTerm: string;
+  handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+};

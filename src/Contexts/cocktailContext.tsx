@@ -1,11 +1,8 @@
 import { createContext } from "react";
+import { initialCocktailState } from "../Constants/initialState";
 import { cocktailContextType } from "../Type";
 
-const CocktailContext = createContext<cocktailContextType>({
-  cocktails: [],
-  loading: true,
-  searchTerm: "",
-  handleChange: () => {},
-});
+const CocktailContext =
+  createContext<cocktailContextType>(initialCocktailState);
 
 export default CocktailContext;

@@ -9,14 +9,19 @@ import Home from "./Pages/Home";
 import { cocktailType } from "./Type";
 
 function App() {
+  const [searchTerm, setSearchterm] = useState<any>("");
   const [loading, setLoading] = useState<boolean>(true);
   const [cocktails, setCocktails] = useState<cocktailType[]>([]);
+
+  const handleChange: React.ChangeEventHandler<HTMLInputElement> = (event) => {
+    setSearchterm(event.target.value);
+  };
 
   const fetchCocktails = async () => {
     setLoading(true);
     try {
       console.log("fetching");
-      const response = await fetch(ALL_URL);
+      const response = await fetch(ALL_URL + searchTerm);
       const res = await response.json();
       if (res.drinks) {
         const desiredCocktails = res.drinks.map((drink: any) => {
@@ -43,10 +48,12 @@ function App() {
   };
   useEffect(() => {
     fetchCocktails();
-  }, []);
+  }, [searchTerm]);
 
   return (
-    <CocktailContext.Provider value={{ cocktails, loading }}>
+    <CocktailContext.Provider
+      value={{ cocktails, loading, searchTerm, handleChange }}
+    >
       <BrowserRouter>
         <Navbar />
         <Routes>

@@ -16,6 +16,7 @@ const Cocktail = () => {
 
   useEffect(() => {
     const fetchTheCocktail = async () => {
+      console.log("fecthing single");
       setLoading(true);
       try {
         const response = await fetch(SINGLE_URL + params.id);

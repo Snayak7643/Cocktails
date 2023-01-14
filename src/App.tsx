@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navbar from "./Components/Navbar";
 import { ALL_URL } from "./Constants/URL";
@@ -17,7 +17,7 @@ function App() {
     setSearchterm(event.target.value);
   };
 
-  const fetchCocktails = async () => {
+  const fetchCocktails = useCallback(async () => {
     setLoading(true);
     try {
       console.log("fetching");
@@ -45,10 +45,11 @@ function App() {
       setLoading(false);
       alert(error);
     }
-  };
+  }, [searchTerm]);
+
   useEffect(() => {
     fetchCocktails();
-  }, [searchTerm]);
+  }, [searchTerm, fetchCocktails]);
 
   return (
     <CocktailContext.Provider

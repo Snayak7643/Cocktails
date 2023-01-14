@@ -40,11 +40,10 @@ function App() {
         return;
       }
       setCocktails([]);
-      setLoading(false);
     } catch (error) {
-      setLoading(false);
       alert(error);
     }
+    setLoading(false);
   }, [searchTerm]);
 
   useEffect(() => {

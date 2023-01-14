@@ -48,11 +48,10 @@ const Cocktail = () => {
           return;
         }
         setCocktail({} as cocktailDetailType);
-        setLoading(false);
       } catch (error) {
         alert(error);
-        setLoading(false);
       }
+      setLoading(false);
     };
     fetchTheCocktail();
   }, [params.id]);

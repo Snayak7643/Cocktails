@@ -1,59 +1,17 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navbar from "./Components/Navbar";
-import { ALL_URL } from "./Constants/URL";
 import CocktailContext from "./Contexts/cocktailContext";
+import { useFetchOnSearch } from "./Hooks/useFetchOnSearch";
 import About from "./Pages/About";
 import Cocktail from "./Pages/Cocktail";
 import Home from "./Pages/Home";
-import { cocktailType } from "./Type";
 
 function App() {
-  const [searchTerm, setSearchterm] = useState<any>("");
-  const [loading, setLoading] = useState<boolean>(true);
-  const [cocktails, setCocktails] = useState<cocktailType[]>([]);
-
-  const handleChange: React.ChangeEventHandler<HTMLInputElement> = (event) => {
-    setSearchterm(event.target.value);
-  };
-
-  const fetchCocktails = useCallback(async () => {
-    setLoading(true);
-    try {
-      console.log("fetching");
-      const response = await fetch(ALL_URL + searchTerm);
-      const res = await response.json();
-      if (res.drinks) {
-        const desiredCocktails = res.drinks.map((drink: any) => {
-          const { idDrink, strDrink, strAlcoholic, strGlass, strDrinkThumb } =
-            drink;
-          return {
-            id: idDrink,
-            name: strDrink,
-            alcoholic: strAlcoholic,
-            glass: strGlass,
-            img: strDrinkThumb,
-          };
-        });
-        setCocktails(desiredCocktails);
-        setLoading(false);
-        return;
-      }
-      setCocktails([]);
-    } catch (error) {
-      alert(error);
-    }
-    setLoading(false);
-  }, [searchTerm]);
-
-  useEffect(() => {
-    fetchCocktails();
-  }, [searchTerm, fetchCocktails]);
+  const value = useFetchOnSearch();
 
   return (
-    <CocktailContext.Provider
-      value={{ cocktails, loading, searchTerm, handleChange }}
-    >
+    <CocktailContext.Provider value={value}>
       <BrowserRouter>
         <Navbar />
         <Routes>

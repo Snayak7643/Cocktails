@@ -17,7 +17,7 @@ const Card: React.FunctionComponent<PropType> = ({ cocktail }) => {
         <h3>{name}</h3>
         <h4>{glass}</h4>
         <p>{alcoholic}</p>
-        <Link to="/cocktail" state={{ id }}>
+        <Link to={"/cocktail/" + id}>
           <button className="btn btn-primary btn-details">Details</button>
         </Link>
       </div>

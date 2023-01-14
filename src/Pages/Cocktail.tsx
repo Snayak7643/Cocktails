@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { cocktailDetailType } from "../Type";
 import { SINGLE_URL } from "../Constants/URL";
 import Loader from "../Components/Loader";
 
 const Cocktail = () => {
-  const location = useLocation();
-  const { id } = location.state;
+  const params = useParams();
 
   //Thinking of creating a new Custom Hook
   const [loading, setLoading] = useState<boolean>(true);
@@ -19,7 +18,7 @@ const Cocktail = () => {
     const fetchTheCocktail = async () => {
       setLoading(true);
       try {
-        const response = await fetch(SINGLE_URL + id);
+        const response = await fetch(SINGLE_URL + params.id);
         const res = await response.json();
         const drink = res.drinks;
         if (drink && drink.length) {
@@ -55,7 +54,7 @@ const Cocktail = () => {
       }
     };
     fetchTheCocktail();
-  }, [id]);
+  }, [params.id]);
 
   //Custom Hook
 

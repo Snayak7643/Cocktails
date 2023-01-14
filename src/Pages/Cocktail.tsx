@@ -1,62 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
-import { cocktailDetailType } from "../Type";
-import { SINGLE_URL } from "../Constants/URL";
 import Loader from "../Components/Loader";
+import { useFetchWithId } from "../Hooks/useFetchWithId";
 
 const Cocktail = () => {
   const params = useParams();
+  const id = params.id === undefined ? "" : params.id;
 
-  //Thinking of creating a new Custom Hook
-  const [loading, setLoading] = useState<boolean>(true);
-  const [cocktail, setCocktail] = useState<cocktailDetailType>(
-    {} as cocktailDetailType
-  );
-
-  useEffect(() => {
-    const fetchTheCocktail = async () => {
-      console.log("fecthing single");
-      setLoading(true);
-      try {
-        const response = await fetch(SINGLE_URL + params.id);
-        const res = await response.json();
-        const drink = res.drinks;
-        if (drink && drink.length) {
-          const {
-            idDrink,
-            strDrink,
-            strCategory,
-            strAlcoholic,
-            strGlass,
-            strDrinkThumb,
-            strInstructions,
-          } = drink[0];
-          const { strIngredient1, strIngredient2 } = drink[0];
-          const ingredients = [strIngredient1, strIngredient2];
-          setCocktail({
-            id: idDrink,
-            name: strDrink,
-            category: strCategory,
-            alcoholic: strAlcoholic,
-            glass: strGlass,
-            img: strDrinkThumb,
-            ingredients,
-            instructions: strInstructions,
-          });
-          setLoading(false);
-          return;
-        }
-        setCocktail({} as cocktailDetailType);
-      } catch (error) {
-        alert(error);
-      }
-      setLoading(false);
-    };
-    fetchTheCocktail();
-  }, [params.id]);
-
-  //Custom Hook
+  const { loading, cocktail } = useFetchWithId(id);
 
   const { name, category, glass, alcoholic, img, ingredients, instructions } =
     cocktail;

@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { FcExpand, FcCollapse } from "react-icons/fc";
 import CartContext from "../Contexts/cartContext";
-import { Increase } from "../Reducers/actions";
+import { Increase, Decrease } from "../Reducers/actions";
 
 const CartItem = () => {
   const { state, dispatch } = useContext(CartContext);
@@ -28,7 +28,11 @@ const CartItem = () => {
                 <FcCollapse />
               </button>
               <p>{quantity}</p>
-              <button>
+              <button
+                onClick={() => {
+                  dispatch(Decrease(id));
+                }}
+              >
                 <FcExpand />
               </button>
             </div>

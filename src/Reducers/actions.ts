@@ -7,5 +7,9 @@ export const Add = (cocktail: cocktailType) => {
 };
 
 export const Increase = (id: number) => {
-  return { type: ACTIONS.ADD, payload: { id } };
+  return { type: ACTIONS.INCREASE, payload: { id } };
+};
+
+export const Decrease = (id: number) => {
+  return { type: ACTIONS.DECREASE, payload: { id } };
 };

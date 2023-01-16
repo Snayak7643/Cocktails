@@ -132,6 +132,9 @@ Navbar
 ======
 */
 .navbar {
+  position: sticky;
+  top: 0;
+  left: 0;
   background: var(--mainWhite);
   height: 5rem;
   display: flex;
@@ -436,4 +439,41 @@ Cocktail
     box-shadow: 0 -2em;
     height: 5em;
   }
+}
+
+/* 
+====== 
+Cart
+======
+*/
+
+.cart-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.item-container {
+  display: grid;
+  grid-template-columns: 15% 70% 20%;
+  margin: 0.3rem;
+  align-items: space-around;
+}
+.cart-btn {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.cart-btn button {
+  background-color: transparent;
+  border: transparent;
+  font-weight: bolder;
+}
+
+.cart-btn button:hover {
+  color: var(--primaryColor);
+}
+.cart-btn p {
+  margin: 0;
+  text-align: center;
 }

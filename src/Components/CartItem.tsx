@@ -1,9 +1,10 @@
 import React, { useContext } from "react";
 import { FcExpand, FcCollapse } from "react-icons/fc";
 import CartContext from "../Contexts/cartContext";
+import { Increase } from "../Reducers/actions";
 
 const CartItem = () => {
-  const { state } = useContext(CartContext);
+  const { state, dispatch } = useContext(CartContext);
 
   if (state.cartCocktails.length === 0) {
     return <h3>No Items in the Cart</h3>;
@@ -12,15 +13,21 @@ const CartItem = () => {
   return (
     <>
       {state.cartCocktails.map((cocktail) => {
+        const { id, name, img, quantity } = cocktail;
+
         return (
-          <div className="item-container" key={cocktail.id}>
-            <img src={cocktail.img} alt="cocktail" />
-            <h3>{cocktail.name}</h3>
+          <div className="item-container" key={id}>
+            <img src={img} alt="cocktail" />
+            <h3>{name}</h3>
             <div className="cart-btn">
-              <button>
+              <button
+                onClick={() => {
+                  dispatch(Increase(id));
+                }}
+              >
                 <FcCollapse />
               </button>
-              <p>{cocktail.quantity}</p>
+              <p>{quantity}</p>
               <button>
                 <FcExpand />
               </button>

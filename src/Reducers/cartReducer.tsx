@@ -43,6 +43,24 @@ const cartReducer = (state: stateType, action: actionType) => {
         totalAmount: state.totalAmount + 100,
       };
     }
+
+    case ACTIONS.INCREASE: {
+      return {
+        ...state,
+        cartCocktails: state.cartCocktails.map((cocktail) => {
+          if (id === cocktail.id) {
+            return {
+              ...cocktail,
+              quantity: cocktail.quantity + 1,
+            };
+          }
+          return cocktail;
+        }),
+        totalQuantity: state.totalQuantity + 1,
+        totalAmount: state.totalAmount + cocktail[0].price,
+      };
+    }
+
     default: {
       return state;
     }

@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import CartContext from "../Contexts/cartContext";
+import { Add } from "../Reducers/actions";
 import { cocktailType } from "../Type";
 
 type PropType = {
@@ -28,7 +29,7 @@ const Card: React.FunctionComponent<PropType> = ({ cocktail }) => {
           <button
             className="btn-primary"
             onClick={() => {
-              dispatch({ type: "add", payload: { id, name, img } });
+              dispatch(Add(cocktail));
             }}
           >
             Add to Cart

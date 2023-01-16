@@ -7,9 +7,6 @@ const Cart = () => {
       <h1 className="section-title">Cart</h1>
       <div className="cart-container">
         <CartItem />
-        <CartItem />
-        <CartItem />
-        <CartItem />
       </div>
     </section>
   );

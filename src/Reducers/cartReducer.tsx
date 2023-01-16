@@ -7,6 +7,8 @@ const cartReducer = (state: stateType, action: actionType) => {
     return id === cocktail.id;
   });
 
+  console.log("reducer");
+
   switch (action.type) {
     case ACTIONS.ADD: {
       if (cocktail.length === 0) {

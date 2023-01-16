@@ -147,7 +147,7 @@ Navbar
   margin: 0 auto;
   max-width: var(--fullWidth);
 }
-.nav-center h2 {
+.nav-center h3 {
   color: var(--primaryColor);
 }
 .nav-links {

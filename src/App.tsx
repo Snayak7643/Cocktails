@@ -4,12 +4,12 @@ import Navbar from "./Components/Navbar";
 import CocktailContext from "./Contexts/cocktailContext";
 import { useFetchOnSearch } from "./Hooks/useFetchOnSearch";
 import About from "./Pages/About";
+import Cart from "./Pages/Cart";
 import Cocktail from "./Pages/Cocktail";
 import Home from "./Pages/Home";
 
 function App() {
   const value = useFetchOnSearch();
-  //value
   return (
     <CocktailContext.Provider value={value}>
       <BrowserRouter>
@@ -18,6 +18,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/cocktail/:id" element={<Cocktail />} />
+          <Route path="/cart" element={<Cart />} />
         </Routes>
       </BrowserRouter>
     </CocktailContext.Provider>

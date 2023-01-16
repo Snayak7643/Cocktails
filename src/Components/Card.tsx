@@ -20,6 +20,9 @@ const Card: React.FunctionComponent<PropType> = ({ cocktail }) => {
         <Link to={"/cocktail/" + id}>
           <button className="btn btn-primary btn-details">Details</button>
         </Link>
+        <div style={{ margin: "0.1rem" }}>
+          <button className="btn-primary">Add to Cart</button>
+        </div>
       </div>
     </article>
   );

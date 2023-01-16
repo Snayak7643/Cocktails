@@ -36,8 +36,9 @@ const useFetchOnSearch = () => {
       setCocktails([]);
     } catch (error) {
       alert(error);
+    } finally {
+      setLoading(false);
     }
-    setLoading(false);
   }, [searchTerm]);
 
   useEffect(() => {

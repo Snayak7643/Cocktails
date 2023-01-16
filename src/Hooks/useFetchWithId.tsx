@@ -43,8 +43,9 @@ const useFetchWithId = (id: string) => {
       setCocktail({} as cocktailDetailType);
     } catch (error) {
       alert(error);
+    } finally {
+      setLoading(false);
     }
-    setLoading(false);
   }, [id]);
 
   useEffect(() => {

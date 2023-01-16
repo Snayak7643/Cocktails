@@ -35,6 +35,7 @@ const cartReducer = (state: stateType, action: actionType) => {
               quantity: cocktail.quantity + 1,
             };
           }
+          return cocktail;
         }),
         totalQuantity: state.totalQuantity + 1,
         totalAmount: state.totalAmount + 100,

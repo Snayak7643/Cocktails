@@ -459,6 +459,12 @@ Cart
   margin: 0.3rem;
   align-items: space-around;
 }
+.item-container img {
+  border-radius: 50%;
+}
+.item-container h3 {
+  text-align: center;
+}
 .cart-btn {
   display: flex;
   flex-direction: column;

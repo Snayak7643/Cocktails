@@ -147,6 +147,9 @@ Navbar
   margin: 0 auto;
   max-width: var(--fullWidth);
 }
+.nav-center h2 {
+  color: var(--primaryColor);
+}
 .nav-links {
   display: flex;
   align-items: center;
@@ -167,6 +170,30 @@ Navbar
 }
 .logo {
   width: 12rem;
+}
+.nav-container {
+  display: block;
+  position: relative;
+}
+nav svg {
+  width: 2rem;
+  fill: var(--primaryColor);
+}
+.amount-container {
+  position: absolute;
+  top: -0.85rem;
+  right: -0.85rem;
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: 50%;
+  background: var(--primaryLightColor);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.total-amount {
+  margin-bottom: 0;
+  font-size: 1.25rem;
 }
 /* 
 ====== 

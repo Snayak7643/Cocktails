@@ -9,7 +9,7 @@ import Home from "./Pages/Home";
 
 function App() {
   const value = useFetchOnSearch();
-
+  //value
   return (
     <CocktailContext.Provider value={value}>
       <BrowserRouter>

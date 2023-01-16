@@ -30,7 +30,7 @@ const cartReducer = (state: stateType, action: actionType) => {
       }
       return {
         ...state,
-        cartCoktails: state.cartCocktails.map((cocktail) => {
+        cartCocktails: state.cartCocktails.map((cocktail) => {
           if (id === cocktail.id) {
             return {
               ...cocktail,

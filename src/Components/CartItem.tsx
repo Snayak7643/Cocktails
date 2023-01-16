@@ -14,13 +14,13 @@ const CartItem = () => {
       {state.cartCocktails.map((cocktail) => {
         return (
           <div className="item-container" key={cocktail.id}>
-            <img src="" alt="cocktail" />
-            <h3>Name</h3>
+            <img src={cocktail.img} alt="cocktail" />
+            <h3>{cocktail.name}</h3>
             <div className="cart-btn">
               <button>
                 <FcCollapse />
               </button>
-              <p>0</p>
+              <p>{cocktail.quantity}</p>
               <button>
                 <FcExpand />
               </button>

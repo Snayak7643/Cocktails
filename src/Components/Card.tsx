@@ -28,7 +28,7 @@ const Card: React.FunctionComponent<PropType> = ({ cocktail }) => {
           <button
             className="btn-primary"
             onClick={() => {
-              dispatch({ type: "add", payload: { id } });
+              dispatch({ type: "add", payload: { id, name, img } });
             }}
           >
             Add to Cart

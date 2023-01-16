@@ -6,8 +6,10 @@ const cartReducer = (state: stateType, action: actionType) => {
   const cocktail = state.cartCocktails.filter((cocktail) => {
     return id === cocktail.id;
   });
+  const price = cocktail.length === 0 ? 0 : cocktail[0].price;
 
   console.log("reducer");
+  console.log(state);
 
   switch (action.type) {
     case ACTIONS.ADD: {
@@ -57,7 +59,7 @@ const cartReducer = (state: stateType, action: actionType) => {
           return cocktail;
         }),
         totalQuantity: state.totalQuantity + 1,
-        totalAmount: state.totalAmount + cocktail[0].price,
+        totalAmount: state.totalAmount + price,
       };
     }
 
@@ -74,7 +76,18 @@ const cartReducer = (state: stateType, action: actionType) => {
           return cocktail;
         }),
         totalQuantity: state.totalQuantity - 1,
-        totalAmount: state.totalAmount - cocktail[0].price,
+        totalAmount: state.totalAmount - price,
+      };
+    }
+
+    case ACTIONS.REMOVE: {
+      return {
+        ...state,
+        cartCocktails: state.cartCocktails.filter((cocktail) => {
+          return id !== cocktail.id;
+        }),
+        totalQuantity: state.totalQuantity - 1,
+        totalAmount: state.totalAmount - price,
       };
     }
 

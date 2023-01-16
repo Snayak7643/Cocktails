@@ -13,3 +13,7 @@ export const Increase = (id: number) => {
 export const Decrease = (id: number) => {
   return { type: ACTIONS.DECREASE, payload: { id } };
 };
+
+export const Remove = (id: number) => {
+  return { type: ACTIONS.REMOVE, payload: { id } };
+};

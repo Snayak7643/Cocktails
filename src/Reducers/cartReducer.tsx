@@ -9,9 +9,6 @@ const cartReducer = (state: stateType, action: actionType) => {
   });
   const price = cocktail.length === 0 ? 0 : cocktail[0].price;
 
-  console.log("reducer");
-  console.log(state);
-
   switch (action.type) {
     case ACTIONS.ADD: {
       if (cocktail.length === 0) {

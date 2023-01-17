@@ -17,3 +17,7 @@ export const Decrease = (id: number) => {
 export const Remove = (id: number) => {
   return { type: ACTIONS.REMOVE, payload: { id } };
 };
+
+export const Clear = () => {
+  return { type: ACTIONS.CLEAR, payload: {} };
+};

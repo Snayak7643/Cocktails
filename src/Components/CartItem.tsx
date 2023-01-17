@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { FcExpand, FcCollapse } from "react-icons/fc";
 import CartContext from "../Contexts/cartContext";
-import { Increase, Decrease, Remove } from "../Reducers/actions";
+import { Increase, Decrease, Remove, Clear } from "../Reducers/actions";
 
 const CartItem = () => {
   const { state, dispatch } = useContext(CartContext);
@@ -43,6 +43,16 @@ const CartItem = () => {
           </div>
         );
       })}
+      <div style={{ textAlign: "center" }}>
+        <button
+          className="btn primary-btn "
+          onClick={() => {
+            dispatch(Clear());
+          }}
+        >
+          Clear All
+        </button>
+      </div>
     </>
   );
 };

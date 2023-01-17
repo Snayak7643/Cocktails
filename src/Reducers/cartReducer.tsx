@@ -1,5 +1,6 @@
 import ACTIONS from "../Constants/actionNames";
 import { actionType, stateType } from "../Type";
+import { initialCartState } from "../Constants/initialState";
 
 const cartReducer = (state: stateType, action: actionType) => {
   const { id } = action.payload;
@@ -89,6 +90,10 @@ const cartReducer = (state: stateType, action: actionType) => {
         totalQuantity: state.totalQuantity - 1,
         totalAmount: state.totalAmount - price,
       };
+    }
+
+    case ACTIONS.CLEAR: {
+      return initialCartState;
     }
 
     default: {

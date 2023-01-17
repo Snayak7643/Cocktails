@@ -43,6 +43,11 @@ const CartItem = () => {
           </div>
         );
       })}
+      <hr />
+      <div className="total">
+        <h3>Total :</h3>
+        <p>$ {state.totalAmount}</p>
+      </div>
       <div style={{ textAlign: "center" }}>
         <button
           className="btn primary-btn "

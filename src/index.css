@@ -483,3 +483,9 @@ Cart
   margin: 0;
   text-align: center;
 }
+
+.total {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}

@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import CartItem from "../Components/CartItem";
+import CartItem from "../Components/CartItems";
 import Total from "../Components/Total";
 import CartContext from "../Contexts/cartContext";
 import { Clear } from "../Reducers/actions";

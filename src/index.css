@@ -492,3 +492,7 @@ Cart
 .clear-all {
   text-align: center;
 }
+.no-item {
+  text-align: center;
+  color: gray;
+}

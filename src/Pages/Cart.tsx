@@ -7,7 +7,7 @@ import { Clear } from "../Reducers/actions";
 const CartContainer = () => {
   const { state, dispatch } = useContext(CartContext);
   if (state.cartCocktails.length === 0) {
-    return <h3>No items In The Cart</h3>;
+    return <h3 className="no-item"> No items In The Cart </h3>;
   }
   return (
     <>

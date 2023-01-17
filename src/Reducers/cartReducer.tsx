@@ -23,12 +23,12 @@ const cartReducer = (state: stateType, action: actionType) => {
               id,
               name: action.payload.name,
               img: action.payload.img,
-              price: 100,
+              price: action.payload.price,
               quantity: 1,
             },
           ],
           totalQuantity: state.totalQuantity + 1,
-          totalAmount: state.totalAmount + 100,
+          totalAmount: state.totalAmount + action.payload.price,
         };
       }
       return {
@@ -43,7 +43,7 @@ const cartReducer = (state: stateType, action: actionType) => {
           return cocktail;
         }),
         totalQuantity: state.totalQuantity + 1,
-        totalAmount: state.totalAmount + 100,
+        totalAmount: state.totalAmount + price,
       };
     }
 

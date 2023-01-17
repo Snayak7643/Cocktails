@@ -3,7 +3,8 @@ import { cocktailType } from "../Type";
 
 export const Add = (cocktail: cocktailType) => {
   const { id, name, img } = cocktail;
-  return { type: ACTIONS.ADD, payload: { id, name, img } };
+  const price: number = 100 + name.length;
+  return { type: ACTIONS.ADD, payload: { id, name, img, price } };
 };
 
 export const Increase = (id: number) => {

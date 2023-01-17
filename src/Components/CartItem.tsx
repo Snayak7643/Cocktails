@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { FcExpand, FcCollapse } from "react-icons/fc";
 import CartContext from "../Contexts/cartContext";
-import { Increase, Decrease, Remove, Clear } from "../Reducers/actions";
+import { Increase, Decrease, Remove } from "../Reducers/actions";
 
 const CartItem = () => {
   const { state, dispatch } = useContext(CartContext);
@@ -43,21 +43,6 @@ const CartItem = () => {
           </div>
         );
       })}
-      <hr />
-      <div className="total">
-        <h3>Total :</h3>
-        <p>$ {state.totalAmount}</p>
-      </div>
-      <div style={{ textAlign: "center" }}>
-        <button
-          className="btn primary-btn "
-          onClick={() => {
-            dispatch(Clear());
-          }}
-        >
-          Clear All
-        </button>
-      </div>
     </>
   );
 };

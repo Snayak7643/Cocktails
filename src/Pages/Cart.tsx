@@ -1,12 +1,38 @@
-import React from "react";
+import React, { useContext } from "react";
 import CartItem from "../Components/CartItem";
+import Total from "../Components/Total";
+import CartContext from "../Contexts/cartContext";
+import { Clear } from "../Reducers/actions";
+
+const CartContainer = () => {
+  const { state, dispatch } = useContext(CartContext);
+  if (state.cartCocktails.length === 0) {
+    return <h3>No items In The Cart</h3>;
+  }
+  return (
+    <>
+      <CartItem />
+      <Total />
+      <div className="clear-all">
+        <button
+          className="btn primary-btn "
+          onClick={() => {
+            dispatch(Clear());
+          }}
+        >
+          Clear All
+        </button>
+      </div>
+    </>
+  );
+};
 
 const Cart = () => {
   return (
     <section className="section about-section">
       <h1 className="section-title">Cart</h1>
       <div className="cart-container">
-        <CartItem />
+        <CartContainer />
       </div>
     </section>
   );

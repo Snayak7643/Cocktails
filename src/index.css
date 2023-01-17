@@ -489,3 +489,6 @@ Cart
   flex-direction: row;
   justify-content: space-between;
 }
+.clear-all {
+  text-align: center;
+}

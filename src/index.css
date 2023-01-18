@@ -132,6 +132,9 @@ Navbar
 ======
 */
 .navbar {
+  position: sticky;
+  top: 0;
+  left: 0;
   background: var(--mainWhite);
   height: 5rem;
   display: flex;
@@ -146,6 +149,9 @@ Navbar
   width: var(--smallWidth);
   margin: 0 auto;
   max-width: var(--fullWidth);
+}
+.nav-center h3 {
+  color: var(--primaryColor);
 }
 .nav-links {
   display: flex;
@@ -167,6 +173,30 @@ Navbar
 }
 .logo {
   width: 12rem;
+}
+.nav-container {
+  display: block;
+  position: relative;
+}
+nav svg {
+  width: 2rem;
+  fill: var(--primaryColor);
+}
+.amount-container {
+  position: absolute;
+  top: -0.85rem;
+  right: -0.85rem;
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: 50%;
+  background: var(--primaryLightColor);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.total-amount {
+  margin-bottom: 0;
+  font-size: 1.25rem;
 }
 /* 
 ====== 
@@ -409,4 +439,60 @@ Cocktail
     box-shadow: 0 -2em;
     height: 5em;
   }
+}
+
+/* 
+====== 
+Cart
+======
+*/
+
+.cart-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.item-container {
+  display: grid;
+  grid-template-columns: 15% 70% 20%;
+  margin: 0.3rem;
+  align-items: space-around;
+}
+.item-container img {
+  border-radius: 50%;
+}
+.item-heading {
+  text-align: center;
+}
+.cart-btn {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.cart-btn button {
+  background-color: transparent;
+  border: transparent;
+  font-weight: bolder;
+}
+
+.cart-btn button:hover {
+  color: var(--primaryColor);
+}
+.cart-btn p {
+  margin: 0;
+  text-align: center;
+}
+
+.total {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.clear-all {
+  text-align: center;
+}
+.no-item {
+  text-align: center;
+  color: gray;
 }

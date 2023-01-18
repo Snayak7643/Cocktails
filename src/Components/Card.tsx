@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import CartContext from "../Contexts/cartContext";
+import { add } from "../Reducers/actions";
 import { cocktailType } from "../Type";
 
 type PropType = {
@@ -8,6 +10,9 @@ type PropType = {
 
 const Card: React.FunctionComponent<PropType> = ({ cocktail }) => {
   const { id, name, img, glass, alcoholic } = cocktail;
+
+  const { dispatch } = useContext(CartContext);
+
   return (
     <article className="cocktail">
       <div className="img-container">
@@ -20,6 +25,16 @@ const Card: React.FunctionComponent<PropType> = ({ cocktail }) => {
         <Link to={"/cocktail/" + id}>
           <button className="btn btn-primary btn-details">Details</button>
         </Link>
+        <div style={{ margin: "0.1rem" }}>
+          <button
+            className="btn-primary"
+            onClick={() => {
+              dispatch(add(cocktail));
+            }}
+          >
+            Add to Cart
+          </button>
+        </div>
       </div>
     </article>
   );

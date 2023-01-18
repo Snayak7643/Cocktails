@@ -23,3 +23,20 @@ export type cocktailContextType = {
   searchTerm: string;
   handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 };
+
+export type stateType = {
+  cartCocktails: {
+    id: number;
+    name: string;
+    img: string;
+    price: number;
+    quantity: number;
+  }[];
+  totalQuantity: number;
+  totalAmount: number;
+};
+
+export type actionType = {
+  type: string;
+  payload: any;
+};

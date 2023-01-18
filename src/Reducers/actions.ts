@@ -1,5 +1,5 @@
 import ACTIONS from "../Constants/actionNames";
-import { cocktailType } from "../Type";
+import { cocktailType, stateType } from "../Type";
 
 export const Add = (cocktail: cocktailType) => {
   const { id, name, img } = cocktail;
@@ -21,4 +21,8 @@ export const Remove = (id: number) => {
 
 export const Clear = () => {
   return { type: ACTIONS.CLEAR, payload: {} };
+};
+
+export const OnLoad = (cartState: stateType) => {
+  return { type: ACTIONS.ON_LOAD, payload: { cartState } };
 };

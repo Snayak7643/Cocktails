@@ -107,6 +107,10 @@ const cartReducer = (state: stateType, action: actionType) => {
       return newState;
     }
 
+    case ACTIONS.ON_LOAD: {
+      return action.payload.cartState;
+    }
+
     default: {
       localStorage.setItem("cartState", JSON.stringify(state));
       return state;

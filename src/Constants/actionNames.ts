@@ -4,6 +4,7 @@ const ACTIONS = {
   DECREASE: "decrease",
   REMOVE: "remove",
   CLEAR: "clear",
+  ON_LOAD: "onLoading",
 };
 
 export default ACTIONS;

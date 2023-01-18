@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import CartItem from "../Components/CartItems";
 import Total from "../Components/Total";
 import CartContext from "../Contexts/cartContext";
-import { Clear } from "../Reducers/actions";
+import { clear } from "../Reducers/actions";
 
 const CartContainer = () => {
   const { state, dispatch } = useContext(CartContext);
@@ -17,7 +17,7 @@ const CartContainer = () => {
         <button
           className="btn primary-btn "
           onClick={() => {
-            dispatch(Clear());
+            dispatch(clear());
           }}
         >
           Clear All

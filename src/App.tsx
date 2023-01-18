@@ -9,7 +9,7 @@ import About from "./Pages/About";
 import Cart from "./Pages/Cart";
 import Cocktail from "./Pages/Cocktail";
 import Home from "./Pages/Home";
-import { OnLoad } from "./Reducers/actions";
+import { onLoad } from "./Reducers/actions";
 import cartReducer from "./Reducers/cartReducer";
 
 function App() {
@@ -22,7 +22,7 @@ function App() {
       const item = localStorage.getItem("cartState");
       if (item !== null) {
         const cartState = await JSON.parse(item);
-        dispatch(OnLoad(cartState));
+        dispatch(onLoad(cartState));
       }
     };
     setCartState();

@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { FcExpand, FcCollapse } from "react-icons/fc";
 import CartContext from "../Contexts/cartContext";
-import { Increase, Decrease, Remove } from "../Reducers/actions";
+import { increase, decrease, remove } from "../Reducers/actions";
 
 const CartItem = () => {
   const { state, dispatch } = useContext(CartContext);
@@ -26,7 +26,7 @@ const CartItem = () => {
             <div className="cart-btn">
               <button
                 onClick={() => {
-                  dispatch(Increase(id));
+                  dispatch(increase(id));
                 }}
               >
                 <FcCollapse />
@@ -35,10 +35,10 @@ const CartItem = () => {
               <button
                 onClick={() => {
                   if (quantity === 1) {
-                    dispatch(Remove(id));
+                    dispatch(remove(id));
                     return;
                   }
-                  dispatch(Decrease(id));
+                  dispatch(decrease(id));
                 }}
               >
                 <FcExpand />

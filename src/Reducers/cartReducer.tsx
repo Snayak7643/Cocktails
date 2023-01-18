@@ -9,10 +9,12 @@ const cartReducer = (state: stateType, action: actionType) => {
   });
   const price = cocktail.length === 0 ? 0 : cocktail[0].price;
 
+  console.log("dispatch");
+
   switch (action.type) {
     case ACTIONS.ADD: {
       if (cocktail.length === 0) {
-        return {
+        const newState = {
           ...state,
           cartCocktails: [
             ...state.cartCocktails,
@@ -27,8 +29,10 @@ const cartReducer = (state: stateType, action: actionType) => {
           totalQuantity: state.totalQuantity + 1,
           totalAmount: state.totalAmount + action.payload.price,
         };
+        localStorage.setItem("cartState", JSON.stringify(newState));
+        return newState;
       }
-      return {
+      const newState = {
         ...state,
         cartCocktails: state.cartCocktails.map((cocktail) => {
           if (id === cocktail.id) {
@@ -42,10 +46,12 @@ const cartReducer = (state: stateType, action: actionType) => {
         totalQuantity: state.totalQuantity + 1,
         totalAmount: state.totalAmount + price,
       };
+      localStorage.setItem("cartState", JSON.stringify(newState));
+      return newState;
     }
 
     case ACTIONS.INCREASE: {
-      return {
+      const newState = {
         ...state,
         cartCocktails: state.cartCocktails.map((cocktail) => {
           if (id === cocktail.id) {
@@ -59,10 +65,12 @@ const cartReducer = (state: stateType, action: actionType) => {
         totalQuantity: state.totalQuantity + 1,
         totalAmount: state.totalAmount + price,
       };
+      localStorage.setItem("cartState", JSON.stringify(newState));
+      return newState;
     }
 
     case ACTIONS.DECREASE: {
-      return {
+      const newState = {
         ...state,
         cartCocktails: state.cartCocktails.map((cocktail) => {
           if (id === cocktail.id) {
@@ -76,10 +84,12 @@ const cartReducer = (state: stateType, action: actionType) => {
         totalQuantity: state.totalQuantity - 1,
         totalAmount: state.totalAmount - price,
       };
+      localStorage.setItem("cartState", JSON.stringify(newState));
+      return newState;
     }
 
     case ACTIONS.REMOVE: {
-      return {
+      const newState = {
         ...state,
         cartCocktails: state.cartCocktails.filter((cocktail) => {
           return id !== cocktail.id;
@@ -87,13 +97,18 @@ const cartReducer = (state: stateType, action: actionType) => {
         totalQuantity: state.totalQuantity - 1,
         totalAmount: state.totalAmount - price,
       };
+      localStorage.setItem("cartState", JSON.stringify(newState));
+      return newState;
     }
 
     case ACTIONS.CLEAR: {
-      return initialCartState;
+      const newState = initialCartState;
+      localStorage.setItem("cartState", JSON.stringify(newState));
+      return newState;
     }
 
     default: {
+      localStorage.setItem("cartState", JSON.stringify(state));
       return state;
     }
   }

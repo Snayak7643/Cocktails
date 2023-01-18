@@ -462,7 +462,7 @@ Cart
 .item-container img {
   border-radius: 50%;
 }
-.item-container h3 {
+.item-heading {
   text-align: center;
 }
 .cart-btn {
